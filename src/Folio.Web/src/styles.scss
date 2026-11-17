@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+/* folio theme — taken from the Job Tracker design (Nocturne system). */
+:root {
+  color-scheme: dark;
+
+  --font: Inter, system-ui, sans-serif;
+
+  --bg: #161826;
+  --bg-glow: #1f2135;
+  --brand: #f1f0f7;
+  --text: #e9e9ed;
+  --text-soft: #c9cad4;
+  --text-muted: #a9abbb;
+  --text-faint: #8e90a3;
+
+  --surface: #232532;
+  --surface-hover: #272a3a;
+  --surface-raised: #262839;
+  --panel: #1d1f2d;
+  --panel-border: #2a2c3c;
+  --row-line: #262838;
+  --line: #33364a;
+  --edit-border: #3a3d55;
+  --dialog: #1f2130;
+  --field: #191b28;
+
+  --accent: #9184d9;
+  --accent-strong: #a397e3;
+  --accent-pressed: #7f71cc;
+  --accent-text: #d2ccf2;
+  --accent-hover: #2a2c40;
+  --save-hover: #2a2746;
+  --link: #b3aae6;
+  --link-hover: #d2ccf2;
+
+  --danger: oklch(0.72 0.1 20);
+  --danger-hover: #2e2228;
+
+  --status-applied: #9184d9;
+  --status-interview: oklch(0.79 0.09 85);
+  --status-offer: oklch(0.77 0.09 155);
+  --status-rejected: oklch(0.68 0.09 20);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link);
+
+  &:hover {
+    color: var(--link-hover);
+  }
+}
+
+::selection {
+  background: #3d3866;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
