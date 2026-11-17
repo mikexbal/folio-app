@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 14px;
+  min-height: 0;
+}
+
+.applications {
+  display: flex;
+  flex: 3 1 0; /* 60/40 split with the overview panel */
+  flex-direction: column;
+  gap: 12px;
+  min-width: 280px;
+  min-height: 0;
+  height: 100%;
+
+  app-application-list {
+    flex: 1;
+  }
+}
+
+.add {
+  flex: none;
+  width: 100%;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--bg);
+  font: 600 13px var(--font);
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: var(--accent-strong);
+  }
+
+  &:active {
+    background: var(--accent-pressed);
+  }
+}

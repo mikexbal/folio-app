@@ -1,0 +1,15 @@
+<section class="applications" aria-label="Applications">
+  <app-application-list (edit)="openEdit($event)" />
+  <button type="button" class="add" (click)="openNew()">+ Add Application</button>
+</section>
+
+<app-overview-panel />
+
+@if (formState(); as state) {
+  <app-job-form-dialog
+    [job]="state.editing"
+    (saved)="save($event)"
+    (deleted)="remove()"
+    (closed)="formState.set(null)"
+  />
+}

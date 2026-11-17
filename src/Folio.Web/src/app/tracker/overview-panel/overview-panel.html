@@ -1,0 +1,48 @@
+<h2 class="heading">Overview</h2>
+
+<div class="donut">
+  <svg viewBox="0 0 180 180" role="img" [attr.aria-label]="donutLabel()" (mouseleave)="hoverTo(null)">
+    <circle class="track" cx="90" cy="90" [attr.r]="radius" />
+    @for (seg of segments(); track seg.id) {
+      @if (seg.count) {
+        <circle
+          class="segment"
+          cx="90"
+          cy="90"
+          [attr.r]="radius"
+          [style.stroke]="seg.color"
+          [style.stroke-width.px]="seg.width"
+          [style.stroke-dasharray]="seg.dash"
+          [style.stroke-dashoffset]="seg.offset"
+          [class.dimmed]="seg.dimmed"
+          (mouseenter)="hoverTo(seg.id)"
+        />
+      }
+    }
+  </svg>
+
+  <div class="centre" aria-hidden="true">
+    <div class="readout" [class.hidden]="hover()">
+      <span class="value">{{ total() }}</span>
+      <span class="caption">Total applied</span>
+    </div>
+    <div class="readout readout-hover" [class.hidden]="!hover()">
+      @if (focused(); as f) {
+        <span class="value" [style.color]="f.color">{{ f.count }}</span>
+        <span class="caption">{{ f.label }} · {{ f.pct }}%</span>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  @for (seg of segments(); track seg.id) {
+    <div class="legend-item" [class.active]="hover() === seg.id" (mouseenter)="hoverTo(seg.id)" (mouseleave)="hoverTo(null)">
+      <span class="legend-label"><span class="dot" [style.background]="seg.color"></span>{{ seg.label }}</span>
+      <span class="legend-figures">
+        <span class="legend-count">{{ seg.count }}</span>
+        <span class="legend-pct">{{ seg.pct }}%</span>
+      </span>
+    </div>
+  }
+</div>

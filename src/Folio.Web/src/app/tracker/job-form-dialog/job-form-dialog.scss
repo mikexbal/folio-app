@@ -1,0 +1,200 @@
+dialog {
+  width: calc(100% - 40px);
+  max-width: 480px;
+  max-height: calc(100vh - 40px);
+  padding: 0;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--dialog);
+  color: var(--text);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.6);
+
+  &::backdrop {
+    background: rgba(10, 11, 18, 0.66);
+    backdrop-filter: blur(3px);
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-faint);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--panel-border);
+    color: var(--text);
+  }
+}
+
+label,
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+input,
+select,
+textarea {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--field);
+  color: var(--text);
+  font: 14px var(--font);
+}
+
+input,
+select {
+  height: 36px;
+  padding: 0 10px;
+}
+
+select {
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+textarea {
+  padding: 8px 10px;
+  line-height: 1.4;
+  resize: vertical;
+}
+
+input.ng-touched.ng-invalid {
+  border-color: var(--status-rejected);
+}
+
+.statuses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  font: 500 12px var(--font);
+  cursor: pointer;
+
+  &.selected {
+    border-color: var(--accent);
+    background: var(--accent-hover);
+  }
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.footer-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.delete,
+.cancel,
+.save {
+  height: 32px;
+  border-radius: 8px;
+  font: 500 13px var(--font);
+  cursor: pointer;
+}
+
+.delete {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--danger);
+
+  &:hover {
+    background: var(--danger-hover);
+  }
+}
+
+.cancel {
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text-soft);
+
+  &:hover {
+    background: var(--panel-border);
+  }
+}
+
+.save {
+  padding: 0 14px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent-text);
+
+  &:hover {
+    background: var(--save-hover);
+  }
+}

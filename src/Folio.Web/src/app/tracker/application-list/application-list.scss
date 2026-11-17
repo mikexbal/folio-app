@@ -1,0 +1,64 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 8px 9px;
+  border-bottom: 1px solid var(--row-line);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-soft);
+  font: 500 13px var(--font);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--surface-hover);
+  }
+
+  &.active {
+    background: var(--surface);
+    color: var(--text);
+  }
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.count {
+  font-weight: 400;
+  color: var(--text-faint);
+}
+
+.rows {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.empty {
+  margin: 0;
+  padding: 24px 17px;
+  font-size: 13px;
+  color: var(--text-faint);
+}

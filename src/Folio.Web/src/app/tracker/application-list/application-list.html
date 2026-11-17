@@ -1,0 +1,30 @@
+<div class="tabs" role="group" aria-label="Filter by status">
+  @for (tab of tabs(); track tab.id) {
+    <button
+      type="button"
+      class="tab"
+      [class.active]="filter() === tab.id"
+      [attr.aria-pressed]="filter() === tab.id"
+      (click)="filter.set(tab.id)"
+    >
+      @if (tab.color) {
+        <span class="dot" [style.background]="tab.color"></span>
+      }
+      {{ tab.label }}
+      <span class="count">{{ tab.count }}</span>
+    </button>
+  }
+</div>
+
+<div class="rows">
+  @for (job of jobs(); track job.id) {
+    <app-job-row
+      [job]="job"
+      [expanded]="openRowId() === job.id"
+      (toggle)="toggleRow(job.id)"
+      (edit)="edit.emit($event)"
+    />
+  } @empty {
+    <p class="empty">No applications here yet.</p>
+  }
+</div>

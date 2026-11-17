@@ -1,0 +1,27 @@
+<button type="button" class="summary" [attr.aria-expanded]="expanded()" (click)="toggle.emit()">
+  <span class="name">
+    <span class="title">{{ job().title }}</span>
+    <span class="company"> · {{ job().company }}</span>
+  </span>
+  <span class="pill" [style.--status]="status().color">
+    <span class="dot"></span>{{ status().label }}
+  </span>
+  <span class="date">{{ job().date | date: 'MMM d' }}</span>
+</button>
+
+@if (expanded()) {
+  <div class="details">
+    @if (meta()) {
+      <div class="meta">{{ meta() }}</div>
+    }
+    @if (job().notes) {
+      <div class="notes">{{ job().notes }}</div>
+    }
+    <div class="actions">
+      @if (job().url) {
+        <a class="posting" [href]="job().url" target="_blank" rel="noopener">Posting ↗</a>
+      }
+      <button type="button" class="edit" (click)="edit.emit(job())">Edit</button>
+    </div>
+  </div>
+}

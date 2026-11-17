@@ -1,0 +1,93 @@
+<dialog #dialog aria-labelledby="job-form-title" (close)="closed.emit()" (click)="onBackdropClick($event)">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="header">
+      <h2 id="job-form-title">{{ job() ? 'Edit application' : 'Add application' }}</h2>
+      <button type="button" class="icon-btn" aria-label="Close" (click)="close()">
+        <i class="ph ph-x" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <label>
+      Job title
+      <input formControlName="title" required placeholder="Product Designer" />
+    </label>
+
+    <div class="row">
+      <label>
+        Company
+        <input formControlName="company" required placeholder="Company name" />
+      </label>
+      <label>
+        Work schedule
+        <select formControlName="position">
+          <option value="">Select…</option>
+          @for (p of positions; track p) {
+            <option [value]="p">{{ p }}</option>
+          }
+        </select>
+      </label>
+    </div>
+
+    <div class="row">
+      <label>
+        Location
+        <input formControlName="location" placeholder="Las Vegas, NV" />
+      </label>
+      <label>
+        Salary range
+        <input formControlName="salary" placeholder="$120k–150k" />
+      </label>
+    </div>
+
+    <div class="row">
+      <label>
+        Date applied
+        <input type="date" formControlName="date" required />
+      </label>
+      <label>
+        Contact person
+        <input formControlName="contact" placeholder="Recruiter name" />
+      </label>
+    </div>
+
+    <label>
+      Job URL
+      <input type="url" formControlName="url" placeholder="https://" />
+    </label>
+
+    <label>
+      Notes
+      <textarea formControlName="notes" rows="3" placeholder="Referral, next steps, interview prep…"></textarea>
+    </label>
+
+    <fieldset>
+      <legend>Status</legend>
+      <div class="statuses">
+        @for (s of statuses; track s.id) {
+          <button
+            type="button"
+            class="status"
+            [class.selected]="form.controls.status.value === s.id"
+            [attr.aria-pressed]="form.controls.status.value === s.id"
+            (click)="pickStatus(s.id)"
+          >
+            <span class="dot" [style.background]="s.color"></span>{{ s.label }}
+          </button>
+        }
+      </div>
+    </fieldset>
+
+    <div class="footer">
+      @if (job()) {
+        <button type="button" class="delete" (click)="deleted.emit()">
+          <i class="ph ph-trash" aria-hidden="true"></i>Delete
+        </button>
+      }
+      <span></span>
+      <div class="footer-actions">
+        <button type="button" class="cancel" (click)="close()">Cancel</button>
+        <button type="submit" class="save">Save</button>
+      </div>
+    </div>
+  </form>
+</dialog>
